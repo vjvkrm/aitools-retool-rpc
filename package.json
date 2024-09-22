@@ -6,8 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "jest",
-    "lint": "eslint .",
-    "format": "prettier --write ."
+    "lint": "eslint ."
   },
   "keywords": [
     "openai",
@@ -22,7 +21,6 @@
   },
   "devDependencies": {
     "jest": "^29.5.0",
-    "eslint": "^8.40.0",
-    "prettier": "^2.8.8"
+    "eslint": "^8.40.0"
   }
 }

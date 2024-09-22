@@ -1,8 +1,6 @@
-const { initiateRpcOpenAi } = require("../openai_tools/initiateRpcOpenAi");
-const axios = require("axios");
-const { Configuration, OpenAIApi } = require("openai");
+import { initiateRpcOpenAi } from "../openai_tools/initiateRpcOpenAi";
+import { OpenAI } from "openai";
 
-jest.mock("axios");
 jest.mock("openai");
 
 describe("initiateRpcOpenAi", () => {
@@ -18,16 +16,17 @@ describe("initiateRpcOpenAi", () => {
 
   it("should successfully make OpenAI and Retool API calls", async () => {
     const mockOpenAIResponse = {
-      data: {
-        choices: [{ message: { content: "OpenAI response" } }],
-      },
+      choices: [{ message: { content: "OpenAI response" } }],
     };
-    const mockRetoolResponse = { data: "Retool response" };
+    const mockRetoolResponse = "Retool response";
 
-    OpenAIApi.prototype.createChatCompletion = jest
-      .fn()
-      .mockResolvedValue(mockOpenAIResponse);
-    axios.post.mockResolvedValue(mockRetoolResponse);
+    // Mock OpenAI SDK
+    OpenAI.prototype.chat.completions.create = jest.fn().mockResolvedValue(mockOpenAIResponse);
+
+    // Mock fetch for Retool API call
+    global.fetch = jest.fn().mockResolvedValue({
+      json: jest.fn().mockResolvedValue(mockRetoolResponse),
+    });
 
     const result = await initiateRpcOpenAi(
       mockPrompt,
@@ -37,21 +36,24 @@ describe("initiateRpcOpenAi", () => {
       mockOpenaiApiKey
     );
 
-    expect(OpenAIApi.prototype.createChatCompletion).toHaveBeenCalledWith({
-      model: "gpt-3.5-turbo",
+    expect(OpenAI.prototype.chat.completions.create).toHaveBeenCalledWith({
+      model: "gpt-4o",
       messages: [{ role: "user", content: mockPrompt }],
     });
-    expect(axios.post).toHaveBeenCalledWith(
+
+    expect(global.fetch).toHaveBeenCalledWith(
       `${mockRetoolHost}api/public/v1/resources/${mockRetoolResourceId}/rpc`,
-      { prompt: "OpenAI response" },
       {
+        method: 'POST',
         headers: {
-          Authorization: `Bearer ${mockRetoolApiToken}`,
-          "Content-Type": "application/json",
+          'Authorization': `Bearer ${mockRetoolApiToken}`,
+          'Content-Type': 'application/json',
         },
+        body: JSON.stringify({ prompt: "OpenAI response" }),
       }
     );
-    expect(result).toBe(mockRetoolResponse.data);
+
+    expect(result).toBe(mockRetoolResponse);
   });
 
   it("should throw an error if required parameters are missing", async () => {
@@ -60,5 +62,5 @@ describe("initiateRpcOpenAi", () => {
     );
   });
 
-  // Add more test cases for error handling scenarios
+  // To-DO Add more test if required : 
 });

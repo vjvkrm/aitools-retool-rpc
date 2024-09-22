@@ -54,13 +54,13 @@ initiateRpcOpenAi(config);
 Optional Arguments in Config:
 
 ```javascript
-const config = {
+
   environmentName: config.environmentName || "production",
   pollingIntervalMs: config.pollingIntervalMs || 1000,
   version: config.version || "0.0.1",
   logLevel: config.logLevel || "info",
   model: config.model || "gpt-4",
-};
+
 ```
 
 ## Configuration
@@ -76,7 +76,7 @@ OPENAI_API_KEY=your_openai_api_key_here
 
 ## Usage
 
-(Provide usage examples here)
+![usage](./assets/Screenshot%202024-09-21%20at%2008.47.24.png)
 
 ## Contributing
 

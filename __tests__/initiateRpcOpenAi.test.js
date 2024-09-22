@@ -1,4 +1,3 @@
-import { jest } from "@jest/globals";
 import { initiateRpcOpenAi } from "../index.js";
 
 describe("initiateRpcOpenAi Function Tests", () => {

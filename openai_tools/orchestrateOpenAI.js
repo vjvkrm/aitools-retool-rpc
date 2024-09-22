@@ -1,5 +1,4 @@
-import { OpenAI } from "openai";
-
+import OpenAI from "openai";
 
 async function orchestrateOpenAi(
   userQuery,
@@ -32,5 +31,4 @@ async function orchestrateOpenAi(
     return error.message;
   }
 }
-
 export { orchestrateOpenAi };

@@ -1,0 +1,28 @@
+{
+  "name": "aitools-retool-rpc",
+  "version": "1.0.0",
+  "description": "A library to initiate RPC calls to Retool using OpenAI",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint .",
+    "format": "prettier --write ."
+  },
+  "keywords": [
+    "openai",
+    "retool",
+    "rpc",
+    "api"
+  ],
+  "author": "Vijay vikram singh",
+  "license": "MIT",
+  "dependencies": {
+    "openai": "^3.2.1"
+  },
+  "devDependencies": {
+    "jest": "^29.5.0",
+    "eslint": "^8.40.0",
+    "prettier": "^2.8.8"
+  }
+}

@@ -69,5 +69,3 @@ function initiateRpcOpenAi(config) {
 }
 
 export default initiateRpcOpenAi;
-
-initiateRpcOpenAi(config);

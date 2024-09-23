@@ -9,8 +9,6 @@ async function orchestrateOpenAi(
 ) {
   const openai = new OpenAI({ apiKey: openaiApiKey });
 
-  // console.log(openai);
-
   try {
     const messages = [
       { role: "system", content: systemMessage },

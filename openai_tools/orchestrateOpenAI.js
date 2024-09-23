@@ -1,4 +1,4 @@
-import OpenAI from "openai";
+import { Configuration, OpenAIApi } from "openai";
 
 async function orchestrateOpenAi(
   userQuery,
@@ -7,7 +7,11 @@ async function orchestrateOpenAi(
   model,
   apiKey
 ) {
-  const openai = new OpenAI({ apiKey });
+  const configuration = new Configuration({
+    apiKey: apiKey,
+  });
+
+  const openai = new OpenAIApi(configuration);
 
   try {
     const messages = [

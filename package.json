@@ -18,7 +18,7 @@
   "license": "MIT",
   "dependencies": {
     "dotenv": "^16.4.5",
-    "openai": "^3.3.0",
+    "openai": "^4.63.0",
     "retoolrpc": "^0.1.6"
   },
   "devDependencies": {

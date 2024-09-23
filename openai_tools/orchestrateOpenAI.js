@@ -1,17 +1,15 @@
-import { Configuration, OpenAIApi } from "openai";
+import OpenAI from "openai";
 
 async function orchestrateOpenAi(
   userQuery,
   tools,
   systemMessage,
   model,
-  apiKey
+  openaiApiKey
 ) {
-  const configuration = new Configuration({
-    apiKey: apiKey,
-  });
+  const openai = new OpenAI({ apiKey: openaiApiKey });
 
-  const openai = new OpenAIApi(configuration);
+  // console.log(openai);
 
   try {
     const messages = [

@@ -1,6 +1,6 @@
 {
   "name": "aitools-retool-rpc",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A library to use RPC  Retool for  OpenAI and other llm function calling",
   "main": "index.js",
   "type": "module",

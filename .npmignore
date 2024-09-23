@@ -1,0 +1,25 @@
+# Exclude node_modules directory
+node_modules/
+
+# Exclude log files
+*.log
+
+# Exclude environment variable files
+*.env
+
+# Exclude test directories
+test/
+tests/
+
+# Exclude coverage reports
+coverage/
+
+# Exclude build directories
+dist/
+build/
+
+# Exclude Git metadata
+.git/
+
+# Exclude macOS-specific metadata files
+.DS_Store
